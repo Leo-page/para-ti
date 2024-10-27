@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para ti</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #e96443, #904e95);
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-top: 1em;
+        }
+
+        @keyframes parpadeo {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Botón personalizado */
+        #mostrarMaquillajeBtn {
+            background-color: #d16ba5;
+            color: rgb(78, 18, 94);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: 0.3s;
+            margin-top: 20px;
+            animation: parpadeo 2s infinite; /* Efecto de parpadeo */
+        }
+
+        #mostrarMaquillajeBtn:hover {
+            background-color: #d48ab8;
+        }
+
+        /* Contenedor de imágenes */
+        #maquillajeContainer {
+            display: none;
+            margin-top: 50px;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 80px;
+            padding: 20px; /* Añadido padding para las luces LED */
+            border-radius: 15px; /* Esquinas redondeadas */
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3), 0 0 30px rgba(255, 0, 255, 0.5); /* Luces LED */
+            position: relative; /* Necesario para el efecto de luces */
+        }
+
+        /* Estilos para el contenedor en forma de corazón */
+        .heart-container {
+            width: 112.5px; /* Reducción del 25% */
+            height: 112.5px; /* Reducción del 25% */
+            position: relative;
+            background-color: #ff85b0;
+            margin: 10px;
+            transform: rotate(-45deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Sombra */
+            transition: transform 0.3s; /* Transición suave */
+        }
+
+        .heart-container:hover {
+            transform: scale(1.1) rotate(-45deg); /* Efecto de hover */
+        }
+
+        .heart-container::before,
+        .heart-container::after {
+            content: "";
+            width: 112.5px; /* Reducción del 25% */
+            height: 112.5px; /* Reducción del 25% */
+            background-color: #ff85b0;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .heart-container::before {
+            top: -56.25px; /* Ajuste para la posición superior */
+            left: 0;
+        }
+
+        .heart-container::after {
+            left: 56.25px; /* Ajuste para la posición izquierda */
+            top: 0;
+        }
+
+        /* Imagen de maquillaje en el corazón */
+        .heart-container img {
+            width: auto; /* Permite que la imagen mantenga su proporción */
+            height: auto; /* Permite que la imagen mantenga su proporción */
+            max-width: 90%; /* Ajusta para que no se salga del contenedor */
+            max-height: 90%; /* Ajusta para que no se salga del contenedor */
+            object-fit: cover; /* Mantiene el aspecto de la imagen */
+            transform: rotate(45deg);
+            border-radius: 10px;
+            z-index: 1; /* Asegura que la imagen esté encima de los pseudo-elementos */
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            #mostrarMaquillajeBtn {
+                font-size: 1em;
+                padding: 8px 15px;
+            }
+
+            .heart-container {
+                width: 75px;
+                height: 75px;
+            }
+
+            .heart-container::before,
+            .heart-container::after {
+                width: 75px;
+                height: 75px;
+            }
+
+            .heart-container::before {
+                top: -37.5px;
+            }
+
+            .heart-container::after {
+                left: 37.5px;
+            }
+
+            .heart-container img {
+                max-width: 80%;
+                max-height: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color: rgb(78, 18, 94);">Para ti, ELSYMAR</h1>
+    <button id="mostrarMaquillajeBtn" onclick="mostrarMaquillaje()">Presiona aqui para ver tu regalo</button>
+
+    <div id="maquillajeContainer" class="maquillaje-container">
+        <div class="heart-container">
+            <img src="imagen1.png" alt="Labial">
+        </div>
+        <div class="heart-container">
+            <img src="imagen2.png" alt="Sombra de ojos">
+        </div>
+        <div class="heart-container">
+            <img src="imagen3.png" alt="Base de maquillaje">
+        </div>
+        <div class="heart-container">
+            <img src="imagen4.png"  alt="Máscara de pestañas">
+        </div>
+    </div>
+    
+
+    <script>
+        function mostrarMaquillaje() {
+            const container = document.getElementById("maquillajeContainer");
+            container.style.display = container.style.display === "none" ? "flex" : "none";
+        }
+    </script>
+</body>
+</html>
